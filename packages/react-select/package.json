@@ -1,5 +1,5 @@
 {
-  "name": "react-select",
+  "name": "react-select-module",
   "version": "3.2.0",
   "description": "A Select control built with and for ReactJS",
   "main": "dist/react-select.cjs.js",
@@ -28,6 +28,60 @@
   "peerDependencies": {
     "react": "^16.8.0 || ^17.0.0",
     "react-dom": "^16.8.0 || ^17.0.0"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/react-select.esm.js",
+      "require": "./dist/react-select.cjs.js",
+      "browser": {
+        "import": "./dist/react-select.browser.esm.js",
+        "require": "./dist/react-select.browser.cjs.js"
+      }
+    },
+    "./src/index.js": {
+      "import": "./src/index.js",
+      "require": "./dist/react-select.cjs.js"
+    },
+    "./base": {
+      "import": "./base/dist/react-select.esm.js",
+      "require": "./base/dist/react-select.cjs.js",
+      "browser": {
+        "import": "./base/dist/react-select.browser.esm.js",
+        "require": "./base/dist/react-select.browser.cjs.js"
+      }
+    },
+    "./animated": {
+      "import": "./animated/dist/react-select.esm.js",
+      "require": "./animated/dist/react-select.cjs.js",
+      "browser": {
+        "import": "./animated/dist/react-select.browser.esm.js",
+        "require": "./animated/dist/react-select.browser.cjs.js"
+      }
+    },
+    "./async": {
+      "import": "./async/dist/react-select.esm.js",
+      "require": "./async/dist/react-select.cjs.js",
+      "browser": {
+        "import": "./async/dist/react-select.browser.esm.js",
+        "require": "./async/dist/react-select.browser.cjs.js"
+      }
+    },
+    "./creatable": {
+      "import": "./creatable/dist/react-select.esm.js",
+      "require": "./creatable/dist/react-select.cjs.js",
+      "browser": {
+        "import": "./creatable/dist/react-select.browser.esm.js",
+        "require": "./creatable/dist/react-select.browser.cjs.js"
+      }
+    },
+    "./async-creatable": {
+      "import": "./async-creatable/dist/react-select.esm.js",
+      "require": "./async-creatable/dist/react-select.cjs.js",
+      "browser": {
+        "import": "./async-creatable/dist/react-select.browser.esm.js",
+        "require": "./async-creatable/dist/react-select.browser.cjs.js"
+      }
+    }
   },
   "files": [
     "dist",
