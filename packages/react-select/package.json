@@ -1,9 +1,10 @@
 {
   "name": "react-select-module",
-  "version": "3.2.0",
+  "version": "3.2.1",
   "description": "A Select control built with and for ReactJS",
   "main": "dist/react-select.cjs.js",
   "module": "dist/react-select.esm.js",
+  "type": "module",
   "sideEffects": false,
   "author": "Jed Watson",
   "license": "MIT",
