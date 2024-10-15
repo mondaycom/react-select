@@ -30,16 +30,21 @@ const Input = ({
   theme,
   selectProps,
   ...props
-}) => (
-  <div css={getStyles('input', { theme, ...props })}>
-    <AutosizeInput
-      className={cx({ input: true }, className)}
-      inputRef={innerRef}
-      inputStyle={inputStyle(isHidden)}
-      disabled={isDisabled}
-      {...props}
-    />
-  </div>
-);
+}) => {
+  const AutosizeInputComponent = AutosizeInput.default
+    ? AutosizeInput.default
+    : AutosizeInput;
+  return (
+    <div css={getStyles('input', { theme, ...props })}>
+      <AutosizeInputComponent
+        className={cx({ input: true }, className)}
+        inputRef={innerRef}
+        inputStyle={inputStyle(isHidden)}
+        disabled={isDisabled}
+        {...props}
+      />
+    </div>
+  );
+};
 
 export default Input;
