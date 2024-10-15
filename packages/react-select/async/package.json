@@ -1,11 +1,28 @@
 {
   "main": "dist/react-select.cjs.js",
   "module": "dist/react-select.esm.js",
+  "type": "module",
   "browser": {
     "./dist/react-select.cjs.js": "./dist/react-select.browser.cjs.js",
     "./dist/react-select.esm.js": "./dist/react-select.browser.esm.js"
   },
   "preconstruct": {
     "source": "../src/Async"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/react-select.esm.js",
+      "require": "./dist/react-select.cjs.js",
+      "browser": {
+        "import": "./dist/react-select.browser.esm.js",
+        "require": "./dist/react-select.browser.cjs.js"
+      }
+    },
+    "./dist/react-select.cjs.js": {
+      "default": "./dist/react-select.cjs.js"
+    },
+    "./dist/react-select.esm.js": {
+      "default": "./dist/react-select.esm.js"
+    }
   }
 }
