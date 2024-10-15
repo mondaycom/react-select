@@ -107,7 +107,7 @@ export function scrollTo(el, top) {
 // Get Scroll Parent
 // ------------------------------
 
-export function getScrollParent() {
+export function getScrollParent(element) {
   let style = getComputedStyle(element);
   const excludeStaticParent = style.position === 'absolute';
   const overflowRx = /(auto|scroll)/;

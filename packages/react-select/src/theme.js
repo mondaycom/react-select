@@ -20,6 +20,7 @@ export const colors = {
   neutral90: 'hsl(0, 0%, 10%)',
 };
 
+const borderRadius = 4;
 // Used to calculate consistent margin/padding on elements
 const baseUnit = 4;
 // The minimum height of the control
