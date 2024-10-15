@@ -1,6 +1,4 @@
-// @flow
 /** @jsx jsx */
-import { type Node } from 'react';
 import { jsx } from '@emotion/core';
 
 // const smallDevice = '@media (max-width: 769px)';
@@ -54,7 +52,7 @@ const A = props => (
   />
 );
 
-export default function Footer(): Node {
+export default function Footer() {
   return (
     <Wrapper>
       <Container>

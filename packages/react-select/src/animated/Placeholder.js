@@ -1,5 +1,3 @@
-// @flow
-
 import React, { type AbstractComponent } from 'react';
 import { type PlaceholderProps } from '../components/Placeholder';
 import { Fade, collapseDuration } from './transitions';

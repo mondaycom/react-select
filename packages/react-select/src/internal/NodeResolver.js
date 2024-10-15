@@ -1,5 +1,3 @@
-// @flow
-
 import { Component, type Element, type ElementRef } from 'react';
 import { findDOMNode } from 'react-dom';
 

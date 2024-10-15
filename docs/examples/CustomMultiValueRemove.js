@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react';
 import EmojiIcon from '@atlaskit/icon/glyph/emoji';
 import Tooltip from '@atlaskit/tooltip';

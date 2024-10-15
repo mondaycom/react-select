@@ -1,5 +1,3 @@
-// @flow
-
 import React, { Component, type Element } from 'react';
 
 import NodeResolver from './NodeResolver';

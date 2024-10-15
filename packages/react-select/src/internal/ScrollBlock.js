@@ -1,4 +1,3 @@
-// @flow
 /** @jsx jsx */
 import { PureComponent, type Element } from 'react';
 import { jsx } from '@emotion/core';

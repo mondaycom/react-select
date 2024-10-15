@@ -1,4 +1,3 @@
-// @flow
 /** @jsx jsx */
 import type { CommonProps } from '../types';
 import { jsx } from '@emotion/core';

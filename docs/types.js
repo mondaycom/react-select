@@ -1,5 +1,3 @@
-// @flow
-
 import type { Location, Match, RouterHistory } from 'react-router-dom';
 
 export type RouterProps = {

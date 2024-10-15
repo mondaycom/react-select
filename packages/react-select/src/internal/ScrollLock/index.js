@@ -1,4 +1,3 @@
-// @flow
 import { Component } from 'react';
 
 import { LOCK_STYLES, STYLE_KEYS } from './constants';

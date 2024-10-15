@@ -1,45 +1,4 @@
-// @flow
-
-import React, {
-  Component,
-  type ElementRef,
-  type AbstractComponent,
-  type Config,
-} from 'react';
-
-import type { ActionMeta, InputActionMeta, ValueType } from './types';
-
-export type DefaultProps = {|
-  defaultInputValue: string,
-  defaultMenuIsOpen: boolean,
-  defaultValue: ValueType,
-|};
-export type Props = {
-  ...DefaultProps,
-  inputValue?: string,
-  menuIsOpen?: boolean,
-  value?: ValueType,
-  onChange?: (ValueType, ActionMeta) => void,
-};
-
-type StateProps<P> = $Diff<
-  P,
-  {
-    inputValue: any,
-    value: any,
-    menuIsOpen: any,
-    onChange: any,
-    onInputChange: any,
-    onMenuClose: any,
-    onMenuOpen: any,
-  }
->;
-
-type State = {
-  inputValue: string,
-  menuIsOpen: boolean,
-  value: ValueType,
-};
+import React, { Component } from 'react';
 
 export const defaultProps = {
   defaultInputValue: '',
@@ -47,13 +6,11 @@ export const defaultProps = {
   defaultValue: null,
 };
 
-const manageState = <C: {}>(
-  SelectComponent: AbstractComponent<C>
-): AbstractComponent<StateProps<C> & Config<Props, DefaultProps>> =>
-  class StateManager extends Component<StateProps<C> & Props, State> {
-    static defaultProps: DefaultProps = defaultProps;
+const manageState = SelectComponent =>
+  class StateManager extends Component {
+    static defaultProps = defaultProps;
 
-    select: ElementRef<*>;
+    select;
 
     state = {
       inputValue:
@@ -76,20 +33,20 @@ const manageState = <C: {}>(
       this.select.blur();
     }
     // FIXME: untyped flow code, return any
-    getProp(key: string) {
+    getProp(key) {
       return this.props[key] !== undefined ? this.props[key] : this.state[key];
     }
     // FIXME: untyped flow code, return any
-    callProp(name: string, ...args: any) {
+    callProp(name, ...args) {
       if (typeof this.props[name] === 'function') {
         return this.props[name](...args);
       }
     }
-    onChange = (value: any, actionMeta: ActionMeta) => {
+    onChange = (value, actionMeta) => {
       this.callProp('onChange', value, actionMeta);
       this.setState({ value });
     };
-    onInputChange = (value: any, actionMeta: InputActionMeta) => {
+    onInputChange = (value, actionMeta) => {
       // TODO: for backwards compatibility, we allow the prop to return a new
       // value, but now inputValue is a controllable prop we probably shouldn't
       const newValue = this.callProp('onInputChange', value, actionMeta);

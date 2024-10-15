@@ -1,4 +1,3 @@
-// @flow
 /** @jsx jsx */
 import { type ElementConfig } from 'react';
 import { jsx } from '@emotion/core';

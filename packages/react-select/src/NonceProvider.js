@@ -1,4 +1,3 @@
-// @flow
 import React, { Component, type Node } from 'react';
 import { CacheProvider } from '@emotion/core';
 import createCache from '@emotion/cache';

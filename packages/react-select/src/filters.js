@@ -1,5 +1,3 @@
-// @flow
-
 type Config = {
   ignoreCase?: boolean,
   ignoreAccents?: boolean,

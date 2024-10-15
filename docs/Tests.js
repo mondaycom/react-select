@@ -1,26 +1,10 @@
-// @flow
-
-import React, { Component, type ComponentType } from 'react';
+import React, { Component } from 'react';
 
 import Select from 'react-select';
-import type { MenuPlacement } from 'react-select/src/types';
 import { H1, Note } from './styled-components';
 import { colourOptions, groupedOptions, optionLength } from './data';
 
 import * as animatedComponents from 'react-select/animated';
-
-type SuiteProps = {
-  selectComponent: ComponentType<any>,
-  idSuffix: string,
-};
-type SuiteState = {
-  isDisabled: boolean,
-  isFixed: boolean,
-  isLoading: boolean,
-  escapeClearsValue: boolean,
-  blockScroll: boolean,
-  portalPlacement: MenuPlacement,
-};
 
 const AnimatedSelect = props => (
   <Select
@@ -32,7 +16,7 @@ const AnimatedSelect = props => (
   />
 );
 
-class TestSuite extends Component<SuiteProps, SuiteState> {
+class TestSuite extends Component {
   state = {
     isDisabled: false,
     isFixed: false,
@@ -57,7 +41,7 @@ class TestSuite extends Component<SuiteProps, SuiteState> {
     this.setState(state => ({ escapeClearsValue: !state.escapeClearsValue }));
   };
 
-  setPlacement = ({ currentTarget }: SyntheticEvent<*>) => {
+  setPlacement = ({ currentTarget }) => {
     const portalPlacement = currentTarget && currentTarget.value;
     this.setState({ portalPlacement });
   };

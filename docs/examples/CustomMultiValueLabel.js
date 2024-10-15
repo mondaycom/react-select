@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react';
 import Tooltip from '@atlaskit/tooltip';
 import Select, { components } from 'react-select';

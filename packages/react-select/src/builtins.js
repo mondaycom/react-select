@@ -1,5 +1,3 @@
-// @flow
-
 import type { GroupType, OptionType } from './types';
 
 export const formatGroupLabel = (group: GroupType): string => group.label;

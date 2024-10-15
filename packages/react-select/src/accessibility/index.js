@@ -1,5 +1,3 @@
-// @flow
-
 import { type OptionType, type OptionsType } from '../types';
 
 export type InstructionsContext = {

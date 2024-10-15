@@ -1,4 +1,3 @@
-// @flow
 /** @jsx jsx */
 import { type Node, type ComponentType } from 'react';
 import { jsx } from '@emotion/core';

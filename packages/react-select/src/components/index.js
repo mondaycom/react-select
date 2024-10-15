@@ -1,4 +1,3 @@
-// @flow
 import { type ComponentType, type Element } from 'react';
 import {
   type IndicatorContainerProps,

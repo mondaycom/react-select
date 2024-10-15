@@ -1,5 +1,3 @@
-// @flow
-
 import React, {
   Component,
   type Config,
@@ -180,10 +178,9 @@ export const makeCreatableSelect = <C: {}>(
   };
 
 // TODO: do this in package entrypoint
-const SelectCreatable = makeCreatableSelect<ElementConfig<typeof Select>>(
-  Select
-);
+const SelectCreatable =
+  makeCreatableSelect < ElementConfig < typeof Select >> Select;
 
-export default manageState<ElementConfig<typeof SelectCreatable>>(
-  SelectCreatable
-);
+export default manageState <
+  ElementConfig <
+  typeof SelectCreatable >> SelectCreatable;

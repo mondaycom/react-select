@@ -1,5 +1,3 @@
-// @flow
-
 import React, { type ElementConfig } from 'react';
 import EmojiIcon from '@atlaskit/icon/glyph/emoji';
 import Select, { components } from 'react-select';

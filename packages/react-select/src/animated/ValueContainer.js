@@ -1,5 +1,3 @@
-// @flow
-
 import React, { type AbstractComponent } from 'react';
 import { TransitionGroup } from 'react-transition-group';
 import { type ValueContainerProps } from '../components/containers';

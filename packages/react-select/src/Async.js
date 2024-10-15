@@ -1,5 +1,3 @@
-// @flow
-
 import React, {
   Component,
   type Config,
@@ -196,6 +194,8 @@ export const makeAsyncSelect = <C: {}>(
     }
   };
 
-const SelectState = manageState<ElementConfig<typeof Select>>(Select);
+const SelectState = manageState < ElementConfig < typeof Select >> Select;
 
-export default makeAsyncSelect<ElementConfig<typeof SelectState>>(SelectState);
+export default makeAsyncSelect <
+  ElementConfig <
+  typeof SelectState >> SelectState;

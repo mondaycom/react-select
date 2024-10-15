@@ -1,4 +1,3 @@
-// @flow
 import memoize from 'memoize-one';
 import isEqual from '../internal/react-fast-compare';
 import { type SelectComponents, defaultComponents } from '../components/index';

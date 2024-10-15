@@ -1,5 +1,3 @@
-// @flow
-
 import React, { type AbstractComponent } from 'react';
 import { type MultiValueProps } from '../components/MultiValue';
 import { Collapse } from './transitions';

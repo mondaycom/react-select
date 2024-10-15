@@ -1,6 +1,5 @@
-// @flow
 /** @jsx jsx */
-import { Component, type ElementConfig } from 'react';
+import { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { jsx } from '@emotion/core';
 
@@ -11,7 +10,7 @@ const contentGutter = 30;
 const smallDevice = '@media (max-width: 769px)';
 const largeDevice = '@media (min-width: 770px)';
 
-export const AppContainer = (props: any) => (
+export const AppContainer = props => (
   <div
     css={{
       boxSizing: 'border-box',
@@ -24,7 +23,7 @@ export const AppContainer = (props: any) => (
     {...props}
   />
 );
-export const PageContent = (props: any) => (
+export const PageContent = props => (
   <div
     css={{
       paddingBottom: contentGutter * 4,
@@ -37,7 +36,7 @@ export const PageContent = (props: any) => (
     {...props}
   />
 );
-export const AppContent = (props: any) => (
+export const AppContent = props => (
   <div
     css={{
       flex: '1 1 auto',
@@ -56,7 +55,7 @@ export const AppContent = (props: any) => (
 // Navigation
 // ==============================
 
-export const PrimaryNav = (props: any) => (
+export const PrimaryNav = props => (
   <div
     css={{
       backgroundColor: 'rgba(0, 0, 0, 0.11)',
@@ -79,8 +78,7 @@ export const PrimaryNav = (props: any) => (
     />
   </div>
 );
-type PrimaryNavItemProps = ElementConfig<typeof Link> & { selected: boolean };
-export const PrimaryNavItem = ({ selected, ...props }: PrimaryNavItemProps) => (
+export const PrimaryNavItem = ({ selected, ...props }) => (
   <Link
     css={{
       color: selected ? 'white' : '#DEEBFF',
@@ -109,7 +107,7 @@ export const PrimaryNavItem = ({ selected, ...props }: PrimaryNavItemProps) => (
 // ==============================
 
 // Return scroll to top on route change
-class ScrollToTop extends Component<*> {
+class ScrollToTop extends Component {
   componentDidUpdate(prevProps) {
     const { history, location } = this.props;
 

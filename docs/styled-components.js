@@ -1,4 +1,3 @@
-// @flow
 /** @jsx emotionJSX */
 import { jsx as emotionJSX } from '@emotion/core';
 

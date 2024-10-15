@@ -1,5 +1,3 @@
-// @flow
-
 import React, { type AbstractComponent } from 'react';
 import { type SingleValueProps } from '../components/SingleValue';
 import { Fade } from './transitions';
