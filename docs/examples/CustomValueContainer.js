@@ -6,9 +6,7 @@ const ValueContainer = ({ children, ...props }) => (
   <components.ValueContainer {...props}>{children}</components.ValueContainer>
 );
 
-type State = {};
-
-export default class CustomControl extends Component<*, State> {
+export default class CustomControl extends Component {
   state = {};
   render() {
     return (

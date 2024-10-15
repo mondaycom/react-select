@@ -1,6 +1,6 @@
 import { Component } from 'react';
-import { type Props, defaultProps } from 'react-select/src/Select';
+import { defaultProps } from 'react-select/src/Select';
 
-export default class Select extends Component<Props> {
+export default class Select extends Component {
   defaultProps = defaultProps;
 }

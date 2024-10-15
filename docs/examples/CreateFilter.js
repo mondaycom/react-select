@@ -5,15 +5,8 @@ import { Note } from '../styled-components';
 
 const Checkbox = props => <input type="checkbox" {...props} />;
 
-type State = {
-  ignoreCase: boolean,
-  ignoreAccents: boolean,
-  trim: boolean,
-  matchFrom: boolean,
-};
-
-export default class SelectCreateFilter extends Component<*, State> {
-  state: State = {
+export default class SelectCreateFilter extends Component {
+  state = {
     ignoreCase: false,
     ignoreAccents: false,
     trim: false,

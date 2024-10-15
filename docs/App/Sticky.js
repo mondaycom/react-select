@@ -1,25 +1,9 @@
-import React, {
-  Component,
-  type ElementRef,
-  type Element as ReactElement,
-} from 'react';
+import React, { Component } from 'react';
 import rafSchedule from 'raf-schd';
 
-type Props = {
-  children: ReactElement<*>, // Component | Element
-  preserveHeight: boolean,
-};
-type State = {
-  height: number | 'auto',
-  isFixed: boolean,
-  overScroll: number,
-  scrollHeight: number | null,
-  width: number | 'auto',
-};
-
-export default class Sticky extends Component<Props, State> {
-  innerEl: ElementRef<'div'>;
-  outerEl: ElementRef<'div'>;
+export default class Sticky extends Component {
+  innerEl;
+  outerEl;
   state = {
     height: 'auto',
     isFixed: false,
@@ -35,7 +19,7 @@ export default class Sticky extends Component<Props, State> {
   componentWillUnmount() {
     window.removeEventListener('scroll', this.handleScroll);
   }
-  handleScroll = rafSchedule((event: Event) => {
+  handleScroll = rafSchedule(event => {
     if (!this.innerEl || !this.outerEl) return;
 
     const offsetBottom = 88; // footer height
@@ -61,12 +45,12 @@ export default class Sticky extends Component<Props, State> {
       this.setState({ overScroll: 0 });
     }
   });
-  getOuterEl = (ref: ElementRef<*>) => {
+  getOuterEl = ref => {
     if (!ref) return;
 
     this.outerEl = ref;
   };
-  getInnerEl = (ref: ElementRef<*>) => {
+  getInnerEl = ref => {
     if (!ref) return;
 
     this.innerEl = ref;

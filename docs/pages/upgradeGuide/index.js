@@ -121,7 +121,7 @@ with your options:
 
 ~~~
 <Select
-  filterOption={(option: {}, inputValue: string) => boolean}
+  filterOption={(option: {}, inputValue) => boolean}
   formatOptionLabel={(option: {}, context: {} ) => Node}
   getOptionLabel={(option: {}) => string}
   getOptionValue={(option: {}) => string}

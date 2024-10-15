@@ -16,7 +16,7 @@ const LoadingMessage = props => {
   );
 };
 
-const filterColors = (inputValue: string) =>
+const filterColors = inputValue =>
   colourOptions.filter(i =>
     i.label.toLowerCase().includes(inputValue.toLowerCase())
   );

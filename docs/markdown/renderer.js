@@ -34,7 +34,7 @@ registerLanguage('jsx', jsx);
 // Helpers
 // ==============================
 
-function slugify(str: string): string {
+function slugify(str) {
   return str.replace(/\W/g, '-').toLowerCase();
 }
 
@@ -120,7 +120,7 @@ const Heading = props => {
 };
 
 // eslint-disable-next-line no-unused-vars
-export const Code = ({ children, inline, literal, nodeKey }: any) => (
+export const Code = ({ children, inline, literal, nodeKey }) => (
   <code
     css={{
       backgroundColor: 'rgba(38, 132, 255, 0.08)',
@@ -135,7 +135,7 @@ export const Code = ({ children, inline, literal, nodeKey }: any) => (
   </code>
 );
 
-export const CodeBlock = ({ codeinfo, literal, nodeKey, ...props }: any) => {
+export const CodeBlock = ({ codeinfo, literal, nodeKey, ...props }) => {
   const language = codeinfo[0];
 
   return (

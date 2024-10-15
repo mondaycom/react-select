@@ -1,18 +1,6 @@
-import React, {
-  Component,
-  type ElementRef,
-  type Element as ReactElement,
-} from 'react';
+import React, { Component } from 'react';
 import rafSchedule from 'raf-schd';
 import NodeResolver from 'react-node-resolver';
-
-type Props = {
-  children: ReactElement<*>,
-  onChange: (Array<any>) => void,
-};
-type State = {
-  elements: Array<HTMLElement>,
-};
 
 function getStyle(el, prop, numeric = true) {
   const val = window.getComputedStyle(el, null).getPropertyValue(prop);
@@ -31,8 +19,8 @@ function isInView(el) {
   return false;
 }
 
-export default class ScrollSpy extends Component<Props, State> {
-  nav: Element;
+export default class ScrollSpy extends Component {
+  nav;
   allIds = [];
   state = { elements: [] };
   static defaultProps = { preserveHeight: false };
@@ -43,7 +31,7 @@ export default class ScrollSpy extends Component<Props, State> {
   componentWillUnmount() {
     window.removeEventListener('scroll', this.handleScroll);
   }
-  handleScroll = rafSchedule((event: Event) => {
+  handleScroll = rafSchedule(event => {
     event.preventDefault();
     const { onChange } = this.props;
     const { elements } = this.state;
@@ -54,7 +42,7 @@ export default class ScrollSpy extends Component<Props, State> {
       onChange(idsInView);
     }
   });
-  getElements = (ref: ElementRef<*>) => {
+  getElements = ref => {
     if (!ref) return;
     this.nav = ref;
   };
@@ -66,7 +54,7 @@ export default class ScrollSpy extends Component<Props, State> {
       document.querySelector(`#${i.dataset.hash}`)
     );
 
-    const elements = ((els: any): Array<HTMLElement>); // suck it flow...
+    const elements = els; // suck it flow...
 
     this.setState({ elements });
   };

@@ -1,11 +1,8 @@
-import React, { type AbstractComponent } from 'react';
-import { type PlaceholderProps } from '../components/Placeholder';
+import React from 'react';
 import { Fade, collapseDuration } from './transitions';
 
 // fade in when last multi-value removed, otherwise instant
-const AnimatedPlaceholder = (
-  WrappedComponent: AbstractComponent<PlaceholderProps>
-): AbstractComponent<PlaceholderProps> => props => (
+const AnimatedPlaceholder = WrappedComponent => props => (
   <Fade
     component={WrappedComponent}
     duration={props.isMulti ? collapseDuration : 1}

@@ -1,38 +1,7 @@
-import React, {
-  Component,
-  type Config,
-  type ElementConfig,
-  type AbstractComponent,
-  type ElementRef,
-} from 'react';
-import Select, { type Props as SelectProps } from './Select';
+import React, { Component } from 'react';
 import { handleInputChange } from './utils';
 import manageState from './stateManager';
-import type { OptionsType, InputActionMeta } from './types';
-
-type DefaultAsyncProps = {|
-  /* The default set of options to show before the user starts searching. When
-     set to `true`, the results for loadOptions('') will be autoloaded. */
-  defaultOptions: OptionsType | boolean,
-  /* If cacheOptions is truthy, then the loaded data will be cached. The cache
-    will remain until `cacheOptions` changes value. */
-  cacheOptions: any,
-|};
-export type AsyncProps = {
-  ...DefaultAsyncProps,
-  /* Function that returns a promise, which is the set of options to be used
-     once the promise resolves. */
-  loadOptions: (string, (OptionsType) => void) => Promise<*> | void,
-  /* Same behaviour as for Select */
-  onInputChange?: (string, InputActionMeta) => void,
-  /* Same behaviour as for Select */
-  inputValue?: string,
-  /* Will cause the select to be displayed in the loading state, even if the
-     Async select is not currently waiting for loadOptions to resolve */
-  isLoading: boolean,
-};
-
-export type Props = SelectProps & AsyncProps;
+import Select from './Select';
 
 export const defaultProps = {
   cacheOptions: false,
@@ -41,25 +10,14 @@ export const defaultProps = {
   isLoading: false,
 };
 
-type State = {
-  defaultOptions?: OptionsType,
-  inputValue: string,
-  isLoading: boolean,
-  loadedInputValue?: string,
-  loadedOptions: OptionsType,
-  passEmptyOptions: boolean,
-};
-
-export const makeAsyncSelect = <C: {}>(
-  SelectComponent: AbstractComponent<C>
-): AbstractComponent<C & Config<AsyncProps, DefaultAsyncProps>> =>
-  class Async extends Component<C & AsyncProps, State> {
+export const makeAsyncSelect = SelectComponent =>
+  class Async extends Component {
     static defaultProps = defaultProps;
-    select: ElementRef<*>;
-    lastRequest: {};
-    mounted: boolean = false;
-    optionsCache: { [string]: OptionsType } = {};
-    constructor(props: C & AsyncProps) {
+    select;
+    lastRequest;
+    mounted = false;
+    optionsCache = {};
+    constructor(props) {
       super();
       this.state = {
         defaultOptions: Array.isArray(props.defaultOptions)
@@ -84,7 +42,7 @@ export const makeAsyncSelect = <C: {}>(
         });
       }
     }
-    UNSAFE_componentWillReceiveProps(nextProps: C & AsyncProps) {
+    UNSAFE_componentWillReceiveProps(nextProps) {
       // if the cacheOptions prop changes, clear the cache
       if (nextProps.cacheOptions !== this.props.cacheOptions) {
         this.optionsCache = {};
@@ -106,7 +64,7 @@ export const makeAsyncSelect = <C: {}>(
     blur() {
       this.select.blur();
     }
-    loadOptions(inputValue: string, callback: (?Array<*>) => void) {
+    loadOptions(inputValue, callback) {
       const { loadOptions } = this.props;
       if (!loadOptions) return callback();
       const loader = loadOptions(inputValue, callback);
@@ -114,7 +72,7 @@ export const makeAsyncSelect = <C: {}>(
         loader.then(callback, () => callback());
       }
     }
-    handleInputChange = (newValue: string, actionMeta: InputActionMeta) => {
+    handleInputChange = (newValue, actionMeta) => {
       const { cacheOptions, onInputChange } = this.props;
       // TODO
       const inputValue = handleInputChange(newValue, actionMeta, onInputChange);
@@ -193,9 +151,6 @@ export const makeAsyncSelect = <C: {}>(
       );
     }
   };
+const SelectState = manageState(Select);
 
-const SelectState = manageState < ElementConfig < typeof Select >> Select;
-
-export default makeAsyncSelect <
-  ElementConfig <
-  typeof SelectState >> SelectState;
+export default makeAsyncSelect(SelectState);

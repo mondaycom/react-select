@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import AsyncSelect from 'react-select/async';
 import { colourOptions } from '../data';
 
-const filterColors = (inputValue: string) => {
+const filterColors = inputValue => {
   return colourOptions.filter(i =>
     i.label.toLowerCase().includes(inputValue.toLowerCase())
   );

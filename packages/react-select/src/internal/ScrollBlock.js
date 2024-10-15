@@ -1,27 +1,19 @@
 /** @jsx jsx */
-import { PureComponent, type Element } from 'react';
+import { PureComponent } from 'react';
 import { jsx } from '@emotion/core';
 import NodeResolver from './NodeResolver';
 import ScrollLock from './ScrollLock/index';
-
-type Props = {
-  children: Element<*>,
-  isEnabled: boolean,
-};
-type State = {
-  touchScrollTarget: HTMLElement | null,
-};
 
 // NOTE:
 // We shouldn't need this after updating to React v16.3.0, which introduces:
 // - createRef() https://reactjs.org/docs/react-api.html#reactcreateref
 // - forwardRef() https://reactjs.org/docs/react-api.html#reactforwardref
 
-export default class ScrollBlock extends PureComponent<Props, State> {
+export default class ScrollBlock extends PureComponent {
   state = { touchScrollTarget: null };
 
   // must be in state to trigger a re-render, only runs once per instance
-  getScrollTarget = (ref: HTMLElement) => {
+  getScrollTarget = ref => {
     if (ref === this.state.touchScrollTarget) return;
     this.setState({ touchScrollTarget: ref });
   };

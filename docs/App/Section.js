@@ -1,7 +1,6 @@
 import React from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
-import type { RouterProps } from '../types';
 import routes from './routes';
 
 const Section = () => {
@@ -16,7 +15,7 @@ const Section = () => {
   );
 };
 
-const Content = ({ location, match }: RouterProps) => {
+const Content = ({ location, match }) => {
   const page = routes[match.path];
 
   return (

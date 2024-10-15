@@ -865,7 +865,7 @@ export default class Select extends Component {
     this.initialTouchX = 0;
     this.initialTouchY = 0;
   };
-  onControlTouchEnd = (event) => {
+  onControlTouchEnd = event => {
     if (this.userIsDragging) return;
     this.onControlMouseDown(event);
   };
@@ -925,7 +925,7 @@ export default class Select extends Component {
       isFocused: false,
     });
   };
-  onOptionHover = (focusedOption) => {
+  onOptionHover = focusedOption => {
     if (this.blockOptionHover || this.state.focusedOption === focusedOption) {
       return;
     }

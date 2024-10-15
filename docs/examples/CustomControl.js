@@ -16,9 +16,7 @@ const ControlComponent = props => (
   </div>
 );
 
-type State = {};
-
-export default class CustomControl extends Component<*, State> {
+export default class CustomControl extends Component {
   state = {};
   render() {
     return (

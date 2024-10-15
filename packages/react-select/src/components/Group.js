@@ -1,27 +1,12 @@
 /** @jsx jsx */
-import { type Node, type ComponentType } from 'react';
 import { jsx } from '@emotion/core';
 
-import type { CommonProps } from '../types';
-
-type ComponentProps = {
-  /** The children to be rendered. */
-  children: Node,
-  /** Component to wrap the label, recieves headingProps. */
-  Heading: ComponentType<any>,
-  /** Props to pass to Heading. */
-  headingProps: any,
-  /** Label to be displayed in the heading component. */
-  label: Node,
-};
-export type GroupProps = CommonProps & ComponentProps;
-
-export const groupCSS = ({ theme: { spacing } }: GroupProps) => ({
+export const groupCSS = ({ theme: { spacing } }) => ({
   paddingBottom: spacing.baseUnit * 2,
   paddingTop: spacing.baseUnit * 2,
 });
 
-const Group = (props: GroupProps) => {
+const Group = props => {
   const {
     children,
     className,
@@ -52,7 +37,7 @@ const Group = (props: GroupProps) => {
   );
 };
 
-export const groupHeadingCSS = ({ theme: { spacing } }: GroupProps) => ({
+export const groupHeadingCSS = ({ theme: { spacing } }) => ({
   label: 'group',
   color: '#999',
   cursor: 'default',
@@ -65,7 +50,7 @@ export const groupHeadingCSS = ({ theme: { spacing } }: GroupProps) => ({
   textTransform: 'uppercase',
 });
 
-export const GroupHeading = (props: any) => {
+export const GroupHeading = props => {
   const { className, cx, getStyles, theme, selectProps, ...cleanProps } = props;
   return (
     <div

@@ -1,18 +1,4 @@
-import { type OptionType, type OptionsType } from '../types';
-
-export type InstructionsContext = {
-  isSearchable?: boolean,
-  isMulti?: boolean,
-  label?: string,
-  isDisabled?: boolean,
-  tabSelectsValue?: boolean,
-};
-export type ValueEventContext = { value: string, isDisabled?: boolean };
-
-export const instructionsAriaMessage = (
-  event: string,
-  context?: InstructionsContext = {}
-) => {
+export const instructionsAriaMessage = (event, context) => {
   const { isSearchable, isMulti, label, isDisabled, tabSelectsValue } = context;
   switch (event) {
     case 'menu':
@@ -34,10 +20,7 @@ export const instructionsAriaMessage = (
   }
 };
 
-export const valueEventAriaMessage = (
-  event: string,
-  context: ValueEventContext
-) => {
+export const valueEventAriaMessage = (event, context) => {
   const { value, isDisabled } = context;
   if (!value) return;
   switch (event) {
@@ -56,10 +39,6 @@ export const valueFocusAriaMessage = ({
   focusedValue,
   getOptionLabel,
   selectValue,
-}: {
-  focusedValue: OptionType,
-  getOptionLabel: (option: OptionType) => string,
-  selectValue: OptionsType,
 }) =>
   `value ${getOptionLabel(focusedValue)} focused, ${selectValue.indexOf(
     focusedValue
@@ -69,22 +48,12 @@ export const optionFocusAriaMessage = ({
   focusedOption,
   getOptionLabel,
   options,
-}: {
-  focusedOption: OptionType,
-  getOptionLabel: (option: OptionType) => string,
-  options: OptionsType,
 }) =>
   `option ${getOptionLabel(focusedOption)} focused${
     focusedOption.isDisabled ? ' disabled' : ''
   }, ${options.indexOf(focusedOption) + 1} of ${options.length}.`;
 
-export const resultsAriaMessage = ({
-  inputValue,
-  screenReaderMessage,
-}: {
-  inputValue: string,
-  screenReaderMessage: string,
-}) =>
+export const resultsAriaMessage = ({ inputValue, screenReaderMessage }) =>
   `${screenReaderMessage}${
     inputValue ? ' for search term ' + inputValue : ''
   }.`;

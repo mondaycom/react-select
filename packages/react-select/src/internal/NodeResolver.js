@@ -1,12 +1,7 @@
-import { Component, type Element, type ElementRef } from 'react';
+import { Component } from 'react';
 import { findDOMNode } from 'react-dom';
 
-type Props = {
-  children: Element<*>,
-  innerRef: ElementRef<*>,
-};
-
-export default class NodeResolver extends Component<Props> {
+export default class NodeResolver extends Component {
   componentDidMount() {
     this.props.innerRef(findDOMNode(this));
   }

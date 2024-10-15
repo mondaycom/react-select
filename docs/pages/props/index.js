@@ -37,11 +37,11 @@ export default function Api() {
     You'll see these in the public props below:
 
     ~~~js
-    type OptionType = { [string]: any }
+    type OptionType = { [string] }
     type OptionsType = Array<OptionType>
 
     type GroupType = {
-      [string]: any, // group label
+      [string], // group label
       options: OptionsType,
     }
 
@@ -55,9 +55,9 @@ export default function Api() {
       isMulti: boolean,
       options: OptionsType,
       selectOption: OptionType => void,
-      selectProps: any,
+      selectProps,
       setValue: (ValueType, ActionTypes) => void,
-      emotion: any,
+      emotion,
     }
 
     // passed as the second argument to \`onChange\`

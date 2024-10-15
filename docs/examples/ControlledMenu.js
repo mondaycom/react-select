@@ -6,15 +6,11 @@ import { Note } from '../styled-components';
 
 const Checkbox = props => <input type="checkbox" {...props} />;
 
-type State = {
-  menuIsOpen: boolean,
-};
-
-export default class controlledMenu extends Component<*, State> {
+export default class controlledMenu extends Component {
   state = {
     menuIsOpen: false,
   };
-  select: ElementRef<*>;
+  select;
   toggleMenuIsOpen = () => {
     this.setState(state => ({ menuIsOpen: !state.menuIsOpen }));
     if (this.select) {

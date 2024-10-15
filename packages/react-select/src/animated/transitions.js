@@ -1,29 +1,17 @@
-import React, { Component, type ComponentType, type ElementRef } from 'react';
+import React, { Component } from 'react';
 import { Transition } from 'react-transition-group';
-
-export type fn = () => void;
-export type BaseTransition = {
-  /** Whether we are in a transition. */
-  in: boolean,
-  /** Function to be called once transition finishes. */
-  onExited: fn,
-};
 
 // ==============================
 // Fade Transition
 // ==============================
 
-type FadeProps = BaseTransition & {
-  component: ComponentType<any>,
-  duration: number,
-};
 export const Fade = ({
   component: Tag,
   duration = 1,
   in: inProp,
   onExited, // eslint-disable-line no-unused-vars
   ...props
-}: FadeProps) => {
+}) => {
   const transition = {
     entering: { opacity: 0 },
     entered: { opacity: 1, transition: `opacity ${duration}ms` },
@@ -51,16 +39,11 @@ export const Fade = ({
 
 export const collapseDuration = 260;
 
-type TransitionState = 'exiting' | 'exited';
-type Width = number | 'auto';
-type CollapseProps = { children: any, in: boolean };
-type CollapseState = { width: Width };
-
 // wrap each MultiValue with a collapse transition; decreases width until
 // finally removing from DOM
-export class Collapse extends Component<CollapseProps, CollapseState> {
+export class Collapse extends Component {
   duration = collapseDuration;
-  rafID: number | null;
+  rafID;
   state = { width: 'auto' };
   transition = {
     exiting: { width: 0, transition: `width ${this.duration}ms ease-out` },
@@ -73,7 +56,7 @@ export class Collapse extends Component<CollapseProps, CollapseState> {
   }
 
   // width must be calculated; cannot transition from `undefined` to `number`
-  getWidth = (ref: ElementRef<*>) => {
+  getWidth = ref => {
     if (ref && isNaN(this.state.width)) {
       /*
         Here we're invoking requestAnimationFrame with a callback invoking our
@@ -91,14 +74,14 @@ export class Collapse extends Component<CollapseProps, CollapseState> {
   };
 
   // get base styles
-  getStyle = (width: Width) => ({
+  getStyle = width => ({
     overflow: 'hidden',
     whiteSpace: 'nowrap',
     width,
   });
 
   // get transition styles
-  getTransition = (state: TransitionState) => this.transition[state];
+  getTransition = state => this.transition[state];
 
   render() {
     const { children, in: inProp } = this.props;

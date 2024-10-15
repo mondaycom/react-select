@@ -14,9 +14,7 @@ const selectStyles = {
   menu: () => ({ boxShadow: 'inset 0 1px 0 rgba(0, 0, 0, 0.1)' }),
 };
 
-type State = { isOpen: boolean, value: Object };
-
-export default class PopoutExample extends Component<*, State> {
+export default class PopoutExample extends Component {
   state = { isOpen: false, value: undefined };
   toggleOpen = () => {
     this.setState(state => ({ isOpen: !state.isOpen }));

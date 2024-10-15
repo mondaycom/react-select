@@ -1,4 +1,4 @@
-import React, { Component, type ElementRef, Fragment } from 'react';
+import React, { Component, Fragment } from 'react';
 
 import Select from 'react-select';
 import AsyncSelect from 'react-select/async';
@@ -7,7 +7,7 @@ import CreatableSelect from 'react-select/creatable';
 import { Note } from '../styled-components';
 import { colourOptions } from '../data';
 
-const filterColors = (inputValue: string) => {
+const filterColors = inputValue => {
   return colourOptions.filter(i =>
     i.label.toLowerCase().includes(inputValue.toLowerCase())
   );
@@ -21,9 +21,9 @@ const promiseOptions = inputValue =>
   });
 
 export default class AccessingInterals extends Component {
-  selectRef: ElementRef<*>;
-  asyncRef: ElementRef<*>;
-  creatableRef: ElementRef<*>;
+  selectRef;
+  asyncRef;
+  creatableRef;
   focus = () => {
     console.log(this.selectRef);
     this.selectRef.focus();
