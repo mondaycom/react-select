@@ -1,4 +1,3 @@
-// @flow
 /** @jsx jsx */
 import { Component } from 'react';
 import { jsx } from '@emotion/core';
@@ -160,7 +159,7 @@ const Option = props => {
   } else return <SelectComponents.Option {...props} />;
 };
 
-class DatePicker extends Component<*, *> {
+class DatePicker extends Component {
   state = {
     options: defaultOptions,
   };
@@ -200,11 +199,11 @@ class DatePicker extends Component<*, *> {
   }
 }
 
-export default class Experimental extends Component<*, *> {
+export default class Experimental extends Component {
   state = {
     value: defaultOptions[0],
   };
-  handleChange = (value: any) => {
+  handleChange = value => {
     this.setState({ value });
   };
   render() {

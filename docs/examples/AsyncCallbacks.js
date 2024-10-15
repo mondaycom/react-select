@@ -3,11 +3,7 @@ import React, { Component } from 'react';
 import AsyncSelect from 'react-select/async';
 import { colourOptions } from '../data';
 
-type State = {
-  inputValue: string,
-};
-
-const filterColors = (inputValue: string) => {
+const filterColors = inputValue => {
   return colourOptions.filter(i =>
     i.label.toLowerCase().includes(inputValue.toLowerCase())
   );
@@ -19,9 +15,9 @@ const loadOptions = (inputValue, callback) => {
   }, 1000);
 };
 
-export default class WithCallbacks extends Component<*, State> {
+export default class WithCallbacks extends Component {
   state = { inputValue: '' };
-  handleInputChange = (newValue: string) => {
+  handleInputChange = newValue => {
     const inputValue = newValue.replace(/\W/g, '');
     this.setState({ inputValue });
     return inputValue;

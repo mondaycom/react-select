@@ -1,7 +1,7 @@
 import { Component } from 'react';
 
-import { type AsyncProps, defaultProps } from 'react-select/src/Async';
+import { defaultProps } from 'react-select/src/Async';
 
-export default class Select extends Component<AsyncProps> {
+export default class Select extends Component {
   defaultProps = defaultProps;
 }

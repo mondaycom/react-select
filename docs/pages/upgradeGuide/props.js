@@ -1,5 +1,3 @@
-// @flow
-
 import React, { Component, Fragment } from 'react';
 
 import Select, { components } from 'react-select';
@@ -224,7 +222,7 @@ class PropStatus extends Component<*> {
   }
 }
 
-class InputOption extends Component<*, *> {
+class InputOption extends Component {
   state = { isActive: false };
   onMouseDown = () => this.setState({ isActive: true });
   onMouseUp = () => this.setState({ isActive: false });
@@ -296,12 +294,9 @@ const getDisplayedStatus = status => {
   else return status;
 };
 
-class PropChanges extends Component<
-  *,
-  { selectedOptions: Array<string>, filterValue: string }
-> {
+class PropChanges extends Component {
   state = {
-    selectedOptions: (allOptions.map(opt => opt.value): Array<string>),
+    selectedOptions: allOptions.map(opt => opt.value),
     filterValue: filterOptions[0].value,
   };
 

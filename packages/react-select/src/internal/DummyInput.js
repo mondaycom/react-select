@@ -1,4 +1,3 @@
-// @flow
 /** @jsx jsx */
 import { jsx } from '@emotion/core';
 
@@ -12,7 +11,7 @@ export default function DummyInput({
   innerRef,
   emotion,
   ...props
-}: any) {
+}) {
   return (
     <input
       ref={innerRef}

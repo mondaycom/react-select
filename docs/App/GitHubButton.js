@@ -1,10 +1,7 @@
-// @flow
 /** @jsx jsx */
 import { jsx } from '@emotion/core';
 
-type Props = { count: number, repo: string };
-
-const StarButton = ({ count, repo }: Props) => (
+const StarButton = ({ count, repo }) => (
   <div css={{ alignItems: 'center', display: 'inline-flex', minWidth: 128 }}>
     <a
       aria-label="Star react-select on GitHub"

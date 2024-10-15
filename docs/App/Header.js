@@ -1,12 +1,10 @@
-// @flow
 /** @jsx jsx */
 import fetch from 'unfetch';
-import { Component, type Node } from 'react';
+import { Component } from 'react';
 import { jsx } from '@emotion/core';
 import { withRouter } from 'react-router-dom';
 
 import Select from 'react-select';
-import type { RouterProps } from '../types';
 import GitHubButton from './GitHubButton';
 import TwitterButton from './TwitterButton';
 
@@ -105,19 +103,16 @@ const Container = props => (
   />
 );
 
-type HeaderProps = RouterProps & { children: Node };
-type HeaderState = { contentHeight: 'auto' | number, stars: number };
-
 const apiUrl = 'https://api.github.com/repos/jedwatson/react-select';
 
-class Header extends Component<HeaderProps, HeaderState> {
-  nav: HTMLElement;
-  content: HTMLElement;
+class Header extends Component {
+  nav;
+  content;
   state = { contentHeight: 'auto', stars: 0 };
   componentDidMount() {
     this.getStarCount();
   }
-  UNSAFE_componentWillReceiveProps({ location }: HeaderProps) {
+  UNSAFE_componentWillReceiveProps({ location }) {
     const valid = ['/', '/home'];
     const shouldCollapse = !valid.includes(this.props.location.pathname);
     if (location.pathname !== this.props.location.pathname && shouldCollapse) {

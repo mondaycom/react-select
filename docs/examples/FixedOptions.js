@@ -3,10 +3,6 @@ import React, { Component } from 'react';
 import Select from 'react-select';
 import { colourOptions } from '../data';
 
-type State = {
-  value: [{ [string]: string }],
-};
-
 const styles = {
   multiValue: (base, state) => {
     return state.data.isFixed ? { ...base, backgroundColor: 'gray' } : base;
@@ -25,7 +21,7 @@ const orderOptions = values => {
   return values.filter(v => v.isFixed).concat(values.filter(v => !v.isFixed));
 };
 
-export default class FixedOptions extends Component<*, State> {
+export default class FixedOptions extends Component {
   state = {
     value: orderOptions([colourOptions[0], colourOptions[1], colourOptions[3]]),
   };

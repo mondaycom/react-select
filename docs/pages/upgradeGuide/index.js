@@ -1,5 +1,3 @@
-// @flow
-
 import React, { Fragment } from 'react';
 import Helmet from 'react-helmet';
 import md from '../../markdown/renderer';
@@ -123,7 +121,7 @@ with your options:
 
 ~~~
 <Select
-  filterOption={(option: {}, inputValue: string) => boolean}
+  filterOption={(option: {}, inputValue) => boolean}
   formatOptionLabel={(option: {}, context: {} ) => Node}
   getOptionLabel={(option: {}) => string}
   getOptionValue={(option: {}) => string}

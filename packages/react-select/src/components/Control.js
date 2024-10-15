@@ -1,36 +1,11 @@
-// @flow
 /** @jsx jsx */
-import { type Node, type ElementRef } from 'react';
 import { jsx } from '@emotion/core';
-
-import type { CommonProps, PropsWithStyles } from '../types';
-
-type State = {
-  /** Whether the select is disabled. */
-  isDisabled: boolean,
-  /** Whether the select is focused. */
-  isFocused: boolean,
-  /** Whether the select is expanded. */
-  menuIsOpen: boolean,
-};
-
-export type ControlProps = CommonProps &
-  PropsWithStyles &
-  State & {
-    /** Children to render. */
-    children: Node,
-    innerRef: ElementRef<*>,
-    /** The mouse down event and the innerRef to pass down to the controller element. */
-    innerProps: {
-      onMouseDown: (SyntheticMouseEvent<HTMLElement>) => void,
-    },
-  };
 
 export const css = ({
   isDisabled,
   isFocused,
   theme: { colors, borderRadius, spacing },
-}: ControlProps) => ({
+}) => ({
   label: 'control',
   alignItems: 'center',
   backgroundColor: isDisabled ? colors.neutral5 : colors.neutral0,
@@ -57,7 +32,7 @@ export const css = ({
   },
 });
 
-const Control = (props: ControlProps) => {
+const Control = props => {
   const {
     children,
     cx,

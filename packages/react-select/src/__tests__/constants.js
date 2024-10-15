@@ -1,5 +1,3 @@
-// @flow
-
 export const OPTIONS = [
   { label: '0', value: 'zero' },
   { label: '1', value: 'one' },

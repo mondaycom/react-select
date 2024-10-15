@@ -1,10 +1,8 @@
-// @flow
 /** @jsx jsx */
-import { Component, type ElementRef } from 'react';
+import { Component } from 'react';
 import { jsx } from '@emotion/core';
 import { Route, Switch } from 'react-router-dom';
 
-import type { RouterProps } from '../types';
 import { animatedScrollTo } from 'react-select/src/utils';
 import routes from './routes';
 import ScrollSpy from './ScrollSpy';
@@ -29,10 +27,8 @@ const NavSection = () => {
   );
 };
 
-type NavState = { links: Array<Object>, activeId: string | null };
-
-class PageNav extends Component<RouterProps, NavState> {
-  scrollSpy: ElementRef<typeof ScrollSpy>;
+class PageNav extends Component {
+  scrollSpy;
   state = { activeId: null, links: [] };
   componentDidMount() {
     const { match } = this.props;
@@ -40,7 +36,7 @@ class PageNav extends Component<RouterProps, NavState> {
     // eslint-disable-next-line
     this.setState({ links: store.getPageHeadings(match.path) });
   }
-  componentDidUpdate({ history, location }: RouterProps) {
+  componentDidUpdate({ history, location }) {
     const { hash } = this.props.location; // old hash
     const shouldRefresh = location.hash !== hash && history.action !== 'POP';
 
@@ -105,7 +101,7 @@ class PageNav extends Component<RouterProps, NavState> {
 
 export default NavSection;
 
-const Nav = (props: any) => (
+const Nav = props => (
   <div
     css={{
       [smallDevice]: {
@@ -131,9 +127,8 @@ const Nav = (props: any) => (
     {...props}
   />
 );
-type NavItemProps = { level: 2 | 3, selected: boolean };
 
-const NavItem = ({ level, selected, ...props }: NavItemProps) => (
+const NavItem = ({ level, selected, ...props }) => (
   <div
     role="button"
     css={{

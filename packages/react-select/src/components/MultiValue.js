@@ -1,28 +1,10 @@
-// @flow
 /** @jsx jsx */
-import { type Node } from 'react';
 import { jsx, ClassNames } from '@emotion/core';
 import { CrossIcon } from './indicators';
-import type { CommonProps } from '../types';
-
-export type MultiValueProps = CommonProps & {
-  children: Node,
-  components: any,
-  cropWithEllipsis: boolean,
-  data: any,
-  innerProps: any,
-  isFocused: boolean,
-  isDisabled: boolean,
-  removeProps: {
-    onTouchEnd: any => void,
-    onClick: any => void,
-    onMouseDown: any => void,
-  },
-};
 
 export const multiValueCSS = ({
   theme: { spacing, borderRadius, colors },
-}: MultiValueProps) => ({
+}) => ({
   label: 'multiValue',
   backgroundColor: colors.neutral10,
   borderRadius: borderRadius / 2,
@@ -34,7 +16,7 @@ export const multiValueCSS = ({
 export const multiValueLabelCSS = ({
   theme: { borderRadius, colors },
   cropWithEllipsis,
-}: MultiValueProps) => ({
+}) => ({
   borderRadius: borderRadius / 2,
   color: colors.neutral80,
   fontSize: '85%',
@@ -48,7 +30,7 @@ export const multiValueLabelCSS = ({
 export const multiValueRemoveCSS = ({
   theme: { spacing, borderRadius, colors },
   isFocused,
-}: MultiValueProps) => ({
+}) => ({
   alignItems: 'center',
   borderRadius: borderRadius / 2,
   backgroundColor: isFocused && colors.dangerLight,
@@ -61,38 +43,17 @@ export const multiValueRemoveCSS = ({
   },
 });
 
-export type MultiValueGenericProps = {
-  children: Node,
-  data: any,
-  innerProps: { className?: string },
-  selectProps: any,
-};
-export const MultiValueGeneric = ({
-  children,
-  innerProps,
-}: MultiValueGenericProps) => <div {...innerProps}>{children}</div>;
+export const MultiValueGeneric = ({ children, innerProps }) => (
+  <div {...innerProps}>{children}</div>
+);
 
 export const MultiValueContainer = MultiValueGeneric;
 export const MultiValueLabel = MultiValueGeneric;
-export type MultiValueRemoveProps = {
-  children: Node,
-  data: any,
-  innerProps: {
-    className: string,
-    onTouchEnd: any => void,
-    onClick: any => void,
-    onMouseDown: any => void,
-  },
-  selectProps: any,
-};
-export function MultiValueRemove({
-  children,
-  innerProps,
-}: MultiValueRemoveProps) {
+export function MultiValueRemove({ children, innerProps }) {
   return <div {...innerProps}>{children || <CrossIcon size={14} />}</div>;
 }
 
-const MultiValue = (props: MultiValueProps) => {
+const MultiValue = props => {
   const {
     children,
     className,

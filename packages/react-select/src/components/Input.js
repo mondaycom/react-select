@@ -1,28 +1,8 @@
-// @flow
 /** @jsx jsx */
-import { type ElementRef } from 'react';
 import { jsx } from '@emotion/core';
 import AutosizeInput from 'react-input-autosize';
 
-import type { PropsWithStyles, ClassNamesState } from '../types';
-
-export type InputProps = PropsWithStyles & {
-  cx: (?ClassNamesState, ?string) => string | void,
-  /** Reference to the internal element */
-  innerRef: (ElementRef<*>) => void,
-  /** Set whether the input should be visible. Does not affect input size. */
-  isHidden: boolean,
-  /** Whether the input is disabled */
-  isDisabled?: boolean,
-  className?: string,
-  /** The ID of the form that the input belongs to */
-  form?: string,
-};
-
-export const inputCSS = ({
-  isDisabled,
-  theme: { spacing, colors },
-}: InputProps) => ({
+export const inputCSS = ({ isDisabled, theme: { spacing, colors } }) => ({
   margin: spacing.baseUnit / 2,
   paddingBottom: spacing.baseUnit / 2,
   paddingTop: spacing.baseUnit / 2,
@@ -50,7 +30,7 @@ const Input = ({
   theme,
   selectProps,
   ...props
-}: InputProps) => (
+}) => (
   <div css={getStyles('input', { theme, ...props })}>
     <AutosizeInput
       className={cx({ input: true }, className)}

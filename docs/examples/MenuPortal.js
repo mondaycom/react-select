@@ -6,13 +6,7 @@ import { H1, Note } from '../styled-components';
 
 import { colourOptions } from '../data';
 
-type State = {
-  isOpen: boolean,
-  isFixed: boolean,
-  portalPlacement: 'auto' | 'bottom' | 'top',
-};
-
-export default class MenuPortal extends Component<*, State> {
+export default class MenuPortal extends Component {
   state = {
     isOpen: false,
     isFixed: false,
@@ -25,7 +19,7 @@ export default class MenuPortal extends Component<*, State> {
   close = () => {
     this.setState({ isOpen: false });
   };
-  setPlacement = ({ currentTarget }: SyntheticEvent<Event>) => {
+  setPlacement = ({ currentTarget }) => {
     const portalPlacement = currentTarget && currentTarget.value;
     this.setState({ portalPlacement });
   };

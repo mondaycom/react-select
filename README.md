@@ -36,7 +36,9 @@ yarn add react-select
 ```
 
 Then use it in your app:
+
 #### With React Component
+
 ```js
 import React from 'react';
 import Select from 'react-select';
@@ -52,9 +54,8 @@ class App extends React.Component {
     selectedOption: null,
   };
   handleChange = selectedOption => {
-    this.setState(
-      { selectedOption },
-      () => console.log(`Option selected:`, this.state.selectedOption)
+    this.setState({ selectedOption }, () =>
+      console.log(`Option selected:`, this.state.selectedOption)
     );
   };
   render() {
@@ -72,9 +73,10 @@ class App extends React.Component {
 ```
 
 #### With React Hooks
+
 ```js
-import React, { useState } from "react";
-import Select from "react-select";
+import React, { useState } from 'react';
+import Select from 'react-select';
 
 const options = [
   { value: 'chocolate', label: 'Chocolate' },
@@ -84,7 +86,7 @@ const options = [
 
 export default function App() {
   const [selectedOption, setSelectedOption] = useState(null);
-  
+
   return (
     <div className="App">
       <Select
@@ -111,7 +113,7 @@ Common props you may want to specify include:
 - `onChange` - subscribe to change events
 - `options` - specify the options the user can select from
 - `placeholder` - change the text displayed when no option is selected
-- `noOptionsMessage` - ({ inputValue: string }) => string | null - Text to display when there are no options
+- `noOptionsMessage` - ({ inputValue }) => string | null - Text to display when there are no options
 - `value` - control the current value
 
 See the [props documentation](https://www.react-select.com/props) for complete documentation on the props react-select supports.

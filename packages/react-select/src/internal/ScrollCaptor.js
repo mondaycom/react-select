@@ -1,22 +1,12 @@
-// @flow
-
-import React, { Component, type Element } from 'react';
+import React, { Component } from 'react';
 
 import NodeResolver from './NodeResolver';
 
-export type CaptorProps = {
-  children: Element<*>,
-  onBottomArrive?: (event: SyntheticEvent<HTMLElement>) => void,
-  onBottomLeave?: (event: SyntheticEvent<HTMLElement>) => void,
-  onTopArrive?: (event: SyntheticEvent<HTMLElement>) => void,
-  onTopLeave?: (event: SyntheticEvent<HTMLElement>) => void,
-};
-
-class ScrollCaptor extends Component<CaptorProps> {
-  isBottom: boolean = false;
-  isTop: boolean = false;
-  scrollTarget: HTMLElement;
-  touchStart: number;
+class ScrollCaptor extends Component {
+  isBottom = false;
+  isTop = false;
+  scrollTarget;
+  touchStart;
 
   componentDidMount() {
     this.startListening(this.scrollTarget);
@@ -24,7 +14,7 @@ class ScrollCaptor extends Component<CaptorProps> {
   componentWillUnmount() {
     this.stopListening(this.scrollTarget);
   }
-  startListening(el: HTMLElement) {
+  startListening(el) {
     // bail early if no element is available to attach to
     if (!el) return;
 
@@ -39,7 +29,7 @@ class ScrollCaptor extends Component<CaptorProps> {
       el.addEventListener('touchmove', this.onTouchMove, false);
     }
   }
-  stopListening(el: HTMLElement) {
+  stopListening(el) {
     if (!el) return;
 
     // all the if statements are to appease Flow 😢
@@ -54,11 +44,11 @@ class ScrollCaptor extends Component<CaptorProps> {
     }
   }
 
-  cancelScroll = (event: SyntheticEvent<HTMLElement>) => {
+  cancelScroll = event => {
     event.preventDefault();
     event.stopPropagation();
   };
-  handleEventDelta = (event: SyntheticEvent<HTMLElement>, delta: number) => {
+  handleEventDelta = (event, delta) => {
     const {
       onBottomArrive,
       onBottomLeave,
@@ -106,19 +96,19 @@ class ScrollCaptor extends Component<CaptorProps> {
     }
   };
 
-  onWheel = (event: SyntheticWheelEvent<HTMLElement>) => {
+  onWheel = event => {
     this.handleEventDelta(event, event.deltaY);
   };
-  onTouchStart = (event: SyntheticTouchEvent<HTMLElement>) => {
+  onTouchStart = event => {
     // set touch start so we can calculate touchmove delta
     this.touchStart = event.changedTouches[0].clientY;
   };
-  onTouchMove = (event: SyntheticTouchEvent<HTMLElement>) => {
+  onTouchMove = event => {
     const deltaY = this.touchStart - event.changedTouches[0].clientY;
     this.handleEventDelta(event, deltaY);
   };
 
-  getScrollTarget = (ref: HTMLElement) => {
+  getScrollTarget = ref => {
     this.scrollTarget = ref;
   };
 
@@ -131,13 +121,6 @@ class ScrollCaptor extends Component<CaptorProps> {
   }
 }
 
-type SwitchProps = CaptorProps & {
-  isEnabled: boolean,
-};
-
-export default function ScrollCaptorSwitch({
-  isEnabled = true,
-  ...props
-}: SwitchProps) {
+export default function ScrollCaptorSwitch({ isEnabled = true, ...props }) {
   return isEnabled ? <ScrollCaptor {...props} /> : props.children;
 }

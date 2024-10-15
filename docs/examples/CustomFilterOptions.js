@@ -2,12 +2,6 @@ import React, { Component } from 'react';
 import Select from 'react-select';
 import { colourOptions } from '../data';
 
-type State = {
-  ignoreCase: boolean,
-  ignoreAccents: boolean,
-  trim: boolean,
-  matchFrom: boolean,
-};
 const filterOptions = (candidate, input) => {
   if (input) {
     return candidate.value === customOptions[0].value;
@@ -23,7 +17,7 @@ const customOptions = [
   ...colourOptions,
 ];
 
-export default class SelectCreateFilter extends Component<*, State> {
+export default class SelectCreateFilter extends Component {
   render() {
     return (
       <Select

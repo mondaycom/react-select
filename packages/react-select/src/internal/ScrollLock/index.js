@@ -1,4 +1,3 @@
-// @flow
 import { Component } from 'react';
 
 import { LOCK_STYLES, STYLE_KEYS } from './constants';
@@ -17,15 +16,7 @@ const canUseDOM = !!(
 
 let activeScrollLocks = 0;
 
-type Props = {
-  accountForScrollbars: boolean,
-  touchScrollTarget?: HTMLElement,
-};
-type TargetStyle = {
-  [key: string]: string | null,
-};
-
-export default class ScrollLock extends Component<Props> {
+export default class ScrollLock extends Component {
   originalStyles = {};
   listenerOptions = {
     capture: false,
@@ -39,7 +30,7 @@ export default class ScrollLock extends Component<Props> {
 
     const { accountForScrollbars, touchScrollTarget } = this.props;
     const target = document.body;
-    const targetStyle = target && (target.style: TargetStyle);
+    const targetStyle = target && target.style;
 
     if (accountForScrollbars) {
       // store any styles already applied to the body
@@ -101,7 +92,7 @@ export default class ScrollLock extends Component<Props> {
 
     const { accountForScrollbars, touchScrollTarget } = this.props;
     const target = document.body;
-    const targetStyle = target && (target.style: TargetStyle);
+    const targetStyle = target && target.style;
 
     // safely decrement active scroll locks
     activeScrollLocks = Math.max(activeScrollLocks - 1, 0);

@@ -1,7 +1,3 @@
-// @flow
-
-import type { Theme } from './types';
-
 export const colors = {
   primary: '#2684FF',
   primary75: '#4C9AFF',
@@ -38,10 +34,8 @@ export const spacing = {
   menuGutter,
 };
 
-export const defaultTheme: Theme = {
+export const defaultTheme = {
   borderRadius,
   colors,
   spacing,
 };
-
-export type ThemeConfig = Theme | ((theme: Theme) => Theme);

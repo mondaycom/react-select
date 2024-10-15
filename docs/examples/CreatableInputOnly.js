@@ -6,27 +6,27 @@ const components = {
   DropdownIndicator: null,
 };
 
-const createOption = (label: string) => ({
+const createOption = label => ({
   label,
   value: label,
 });
 
-export default class CreatableInputOnly extends Component<*, State> {
+export default class CreatableInputOnly extends Component {
   state = {
     inputValue: '',
     value: [],
   };
-  handleChange = (value: any, actionMeta: any) => {
+  handleChange = (value, actionMeta) => {
     console.group('Value Changed');
     console.log(value);
     console.log(`action: ${actionMeta.action}`);
     console.groupEnd();
     this.setState({ value });
   };
-  handleInputChange = (inputValue: string) => {
+  handleInputChange = inputValue => {
     this.setState({ inputValue });
   };
-  handleKeyDown = (event: SyntheticKeyboardEvent<HTMLElement>) => {
+  handleKeyDown = event => {
     const { inputValue, value } = this.state;
     if (!inputValue) return;
     switch (event.key) {

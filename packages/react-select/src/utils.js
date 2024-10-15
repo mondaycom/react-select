@@ -1,13 +1,3 @@
-// @flow
-
-import { type ElementRef } from 'react';
-import type {
-  ClassNamesState,
-  InputActionMeta,
-  OptionsType,
-  ValueType,
-} from './types';
-
 // ==============================
 // NO OP
 // ==============================
@@ -38,11 +28,7 @@ function applyPrefixToName(prefix, name) {
   }
 }
 
-export function classNames(
-  prefix?: string | null,
-  state?: ClassNamesState,
-  className?: string
-) {
+export function classNames(prefix, state, className) {
   const arr = [className];
   if (state && prefix) {
     for (let key in state) {
@@ -61,7 +47,7 @@ export function classNames(
 // Clean Value
 // ==============================
 
-export const cleanValue = (value: ValueType): OptionsType => {
+export const cleanValue = value => {
   if (Array.isArray(value)) return value.filter(Boolean);
   if (typeof value === 'object' && value !== null) return [value];
   return [];
@@ -71,11 +57,7 @@ export const cleanValue = (value: ValueType): OptionsType => {
 // Handle Input Change
 // ==============================
 
-export function handleInputChange(
-  inputValue: string,
-  actionMeta: InputActionMeta,
-  onInputChange?: (string, InputActionMeta) => string | void
-) {
+export function handleInputChange(inputValue, actionMeta, onInputChange) {
   if (onInputChange) {
     const newValue = onInputChange(inputValue, actionMeta);
     if (typeof newValue === 'string') return newValue;
@@ -87,14 +69,14 @@ export function handleInputChange(
 // Scroll Helpers
 // ==============================
 
-export function isDocumentElement(el: Element) {
+export function isDocumentElement(el) {
   return [document.documentElement, document.body, window].indexOf(el) > -1;
 }
 
 // Normalized Scroll Top
 // ------------------------------
 
-export function normalizedHeight(el: Element): number {
+export function normalizedHeight(el) {
   if (isDocumentElement(el)) {
     return window.innerHeight;
   }
@@ -105,14 +87,14 @@ export function normalizedHeight(el: Element): number {
 // Normalized scrollTo & scrollTop
 // ------------------------------
 
-export function getScrollTop(el: Element): number {
+export function getScrollTop(el) {
   if (isDocumentElement(el)) {
     return window.pageYOffset;
   }
   return el.scrollTop;
 }
 
-export function scrollTo(el: Element, top: number): void {
+export function scrollTo(el, top) {
   // with a scroll distance, we perform scroll on the element
   if (isDocumentElement(el)) {
     window.scrollTo(0, top);
@@ -125,11 +107,11 @@ export function scrollTo(el: Element, top: number): void {
 // Get Scroll Parent
 // ------------------------------
 
-export function getScrollParent(element: ElementRef<*>): Element {
+export function getScrollParent(element) {
   let style = getComputedStyle(element);
   const excludeStaticParent = style.position === 'absolute';
   const overflowRx = /(auto|scroll)/;
-  const docEl = ((document.documentElement: any): Element); // suck it, flow...
+  const docEl = document.documentElement; // suck it, flow...
 
   if (style.position === 'fixed') return docEl;
 
@@ -155,16 +137,11 @@ export function getScrollParent(element: ElementRef<*>): Element {
   @param c: amount of change
   @param d: duration
 */
-function easeOutCubic(t: number, b: number, c: number, d: number): number {
+function easeOutCubic(t, b, c, d) {
   return c * ((t = t / d - 1) * t * t + 1) + b;
 }
 
-export function animatedScrollTo(
-  element: Element,
-  to: number,
-  duration: number = 200,
-  callback: Element => void = noop
-) {
+export function animatedScrollTo(element, to, duration = 200, callback = noop) {
   const start = getScrollTop(element);
   const change = to - start;
   const increment = 10;
@@ -186,10 +163,7 @@ export function animatedScrollTo(
 // Scroll Into View
 // ------------------------------
 
-export function scrollIntoView(
-  menuEl: HTMLElement,
-  focusedEl: HTMLElement
-): void {
+export function scrollIntoView(menuEl, focusedEl) {
   const menuRect = menuEl.getBoundingClientRect();
   const focusedRect = focusedEl.getBoundingClientRect();
   const overScroll = focusedEl.offsetHeight / 3;
@@ -215,7 +189,7 @@ export function scrollIntoView(
 // ==============================
 
 // cannot get keys using array notation with DOMRect
-export function getBoundingClientObj(element: HTMLElement) {
+export function getBoundingClientObj(element) {
   const rect = element.getBoundingClientRect();
   return {
     bottom: rect.bottom,
@@ -226,19 +200,11 @@ export function getBoundingClientObj(element: HTMLElement) {
     width: rect.width,
   };
 }
-export type RectType = {
-  left: number,
-  right: number,
-  bottom: number,
-  height: number,
-  width: number,
-};
-
 // ==============================
 // String to Key (kebabify)
 // ==============================
 
-export function toKey(str: string): string {
+export function toKey(str) {
   return str.replace(/\W/g, '-');
 }
 
