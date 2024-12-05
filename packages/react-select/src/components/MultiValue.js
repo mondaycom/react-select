@@ -1,6 +1,7 @@
 /** @jsx jsx */
-import { jsx, ClassNames } from '@emotion/core';
+import * as emotionCore from '@emotion/core';
 import { CrossIcon } from './indicators';
+const { jsx, ClassNames } = emotionCore;
 
 export const multiValueCSS = ({
   theme: { spacing, borderRadius, colors },

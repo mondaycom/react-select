@@ -1,7 +1,8 @@
 /** @jsx jsx */
 import { createContext, Component } from 'react';
-import { jsx } from '@emotion/core';
+import * as emotionCore from '@emotion/core';
 import { createPortal } from 'react-dom';
+const { jsx } = emotionCore;
 
 import {
   animatedScrollTo,

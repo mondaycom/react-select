@@ -1,5 +1,6 @@
 /** @jsx jsx */
-import { jsx } from '@emotion/core';
+import * as emotionCore from '@emotion/core';
+const { jsx } = emotionCore;
 
 // Assistive text to describe visual elements. Hidden for sighted users.
 const A11yText = props => (

@@ -1,5 +1,6 @@
 /** @jsx jsx */
-import { jsx } from '@emotion/core';
+import * as emotionCore from '@emotion/core';
+const { jsx } = emotionCore;
 
 export default function DummyInput({
   in: inProp,

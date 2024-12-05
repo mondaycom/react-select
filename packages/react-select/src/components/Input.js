@@ -1,5 +1,6 @@
 /** @jsx jsx */
-import { jsx } from '@emotion/core';
+import * as emotionCore from '@emotion/core';
+const { jsx } = emotionCore;
 import AutosizeInput from 'react-input-autosize';
 
 export const inputCSS = ({ isDisabled, theme: { spacing, colors } }) => ({

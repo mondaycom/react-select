@@ -1,5 +1,6 @@
 /** @jsx jsx */
-import { jsx } from '@emotion/core';
+import * as emotionCore from '@emotion/core';
+const { jsx } = emotionCore;
 
 export const placeholderCSS = ({ theme: { spacing, colors } }) => ({
   label: 'placeholder',

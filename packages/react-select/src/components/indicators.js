@@ -1,5 +1,6 @@
 /** @jsx jsx */
-import { jsx, keyframes } from '@emotion/core';
+import * as emotionCore from '@emotion/core';
+const { jsx, keyframes } = emotionCore;
 
 // ==============================
 // Dropdown & Clear Icons

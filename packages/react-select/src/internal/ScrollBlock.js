@@ -1,8 +1,9 @@
 /** @jsx jsx */
 import { PureComponent } from 'react';
-import { jsx } from '@emotion/core';
+import * as emotionCore from '@emotion/core';
 import NodeResolver from './NodeResolver';
 import ScrollLock from './ScrollLock/index';
+const { jsx } = emotionCore;
 
 // NOTE:
 // We shouldn't need this after updating to React v16.3.0, which introduces:
