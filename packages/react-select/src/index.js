@@ -1,8 +1,7 @@
 import SelectBase from './Select';
 import manageState from './stateManager';
 
-const Select = manageState(SelectBase);
-export { Select };
+export default manageState(SelectBase);
 
 export { default as NonceProvider } from './NonceProvider';
 export { mergeStyles } from './styles';
